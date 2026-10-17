@@ -1,0 +1,19 @@
+{
+  "name": "Chili's · Ordering App",
+  "short_name": "Chili's",
+  "description": "Browse the Chili's demo menu, order for pickup or delivery, track demo orders and earn demo rewards.",
+  "id": "./",
+  "start_url": "app.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait",
+  "background_color": "#101014",
+  "theme_color": "#d71935",
+  "categories": ["food", "shopping"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

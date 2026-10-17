@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Chili's mobile ordering demo: browse the menu, build a cart, checkout, track demo orders and earn demo rewards.">
+  <title>Chili’s · Ordering Demo</title>
+  <meta name="theme-color" content="#d71935">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Chili’s">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="chili.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Barlow+Condensed:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="pwa.js"></script>
+  <script src="lucide.min.js"></script>
+  </head>
+ <body>
+  <main class="stage">
+   <div class="phone" aria-label="Restaurant ordering demo inside one smartphone">
+    <div class="screen">
+     <div class="status">
+      <span id="clock">9:41</span><span class="status-icons" aria-label="Signal, Wi-Fi, battery"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span>
+     </div>
+     <header class="header">
+      <div class="header-row">
+       <div class="brand" aria-label="Chili’s">
+        <svg viewBox="0 0 32 38" fill="none" aria-hidden="true">
+         <path d="M15 7C11 4 6 5 5 9c-1 4 3 6 8 6 3 0 7-1 9-4 2-3 1-7-2-8-2-1-4 0-5 4Z" fill="#70aa38"></path><path d="M14 11c6 1 11 5 10 12-1 8-8 13-17 12 4-2 6-5 7-10 1-5-2-9-7-12 2-2 4-2 7-2Z" fill="#d71935"></path>
+        </svg><span>Chili’s</span>
+       </div>
+       <nav class="header-links" aria-label="Website navigation">
+        <button type="button" data-go="menu">MENU</button><button type="button" data-go="rewards">REWARDS</button><button type="button" data-go="locations">LOCATIONS</button>
+       </nav>
+       <div class="header-actions">
+        <button id="location-trigger" type="button" aria-label="Choose sample location"><i data-lucide="map-pin"></i></button><button id="bag-trigger" type="button" aria-label="Open cart"><i data-lucide="shopping-bag"></i><span id="cart-badge" class="badge">0</span></button>
+       </div>
+      </div>
+     </header>
+     <div id="scroller" class="scroller" tabindex="0" aria-label="Scrollable app content">
+      <section id="home" class="view active" aria-label="Home">
+       <div class="modebar">
+        <div class="mode">
+         <button type="button" data-mode="pickup">PICKUP</button><button type="button" data-mode="delivery">DELIVERY</button>
+        </div><button id="location-short" class="location-short" type="button" data-go="locations"></button>
+       </div>
+       <div class="hero"><img loading="lazy" src="images/pexels-photo-25390061.jpg" alt="Close-up of a fried snack platter with chicken wings and onion rings">
+        <div class="hero-copybox">
+         <span class="eyebrow">THE CROWD FAVORITE</span>
+         <h1 class="sr-only">Triple Dipper</h1><img class="hero-logo" src="triple-dipper-logo.webp" alt="" width="1285" height="1203">
+         <p>Three favorites, your favorite dips, and a whole lot to love.</p>
+         <div class="hero-buttons">
+          <button class="btn btn-light" type="button" data-detail="dipper">ORDER NOW</button><button class="btn btn-outline" type="button" data-go="menu">VIEW MENU</button>
+         </div>
+        </div>
+       </div>
+       <div class="red-strip">BIG FLAVOR. GOOD TIMES. MADE TO ORDER.</div>
+       <div class="section">
+        <div class="section-heading">
+         <span class="eyebrow">CRAVE-WORTHY PICKS</span>
+         <h2>OUR FAVORITES</h2>
+         <p>A little something for every craving.</p>
+        </div>
+        <div class="rail" aria-label="Swipeable favorites">
+         <article class="feature">
+          <img loading="lazy" src="images/pexels-photo-25390059.jpg" alt="Assortment of fried snacks and dipping sauces on a platter"><strong>Triple Dipper</strong><span class="price">$16.99</span><button class="btn" type="button" data-detail="dipper">ORDER NOW</button>
+         </article>
+         <article class="feature">
+          <img loading="lazy" src="images/pexels-photo-1639557.jpg" alt="Cheeseburger with bacon, lettuce, tomato and sesame bun"><strong>Big Mouth Burger</strong><span class="price">$14.99</span><button class="btn" type="button" data-detail="burger">ORDER NOW</button>
+         </article>
+         <article class="feature">
+          <img loading="lazy" src="images/pexels-photo-40135711.jpg" alt="Sizzling beef fajitas with peppers and sauces"><strong>Sizzling Fajitas</strong><span class="price">$21.99</span><button class="btn" type="button" data-detail="fajitas">ORDER NOW</button>
+         </article>
+         <article class="feature">
+          <img loading="lazy" src="images/pexels-photo-27294722.jpg" alt="Spicy chicken wings with chili sauce"><strong>Boneless Wings</strong><span class="price">$13.99</span><button class="btn" type="button" data-detail="wings">ORDER NOW</button>
+         </article>
+        </div>
+       </div>
+       <div class="photo-promo">
+        <img loading="lazy" src="images/pexels-photo-31256017.jpg" alt="Three colorful margaritas garnished with citrus">
+        <div class="promo-copy">
+         <span class="eyebrow">SIP SOMETHING GOOD</span>
+         <h2>HAPPY HOUR ENERGY</h2>
+         <p>Bright sips and laid-back moments. Explore refreshing demo-menu drinks.</p><button class="btn" type="button" data-category-go="Drinks">EXPLORE DRINKS</button>
+        </div>
+       </div>
+       <div class="photo-promo yellow-promo">
+        <div class="promo-copy">
+         <span class="eyebrow">TURN UP THE FLAVOR</span>
+         <h2>GOOD FOOD, GREAT COMPANY</h2>
+         <p>Find your next favorite bite on the menu.</p><button class="btn" type="button" data-go="menu">ORDER YOUR FAVORITES</button>
+        </div><img loading="lazy" src="images/pexels-photo-1639557.jpg" alt="Juicy bacon cheeseburger with fresh toppings">
+       </div>
+       <div class="campaign">
+        <h2>MOVE OVER TINY FAST FOOD CHICKEN SANDWICHES</h2>
+        <p>Make room for a bigger, bolder crispy chicken bite.</p><img loading="lazy" src="images/pexels-photo-5474836.jpg" alt="Crispy chicken sandwich with lettuce and creamy sauce">
+        <div class="campaign-actions">
+         <button class="btn btn-light" type="button" data-detail="chicken">TRY THE CHICKEN SANDWICH</button>
+        </div>
+       </div>
+       <div class="section">
+        <div class="section-heading">
+         <span class="eyebrow">FIND YOUR NEXT FAVORITE</span>
+         <h2>WHAT’S HOT</h2>
+        </div>
+        <div class="highlight-grid">
+         <article class="highlight">
+          <img loading="lazy" src="images/pexels-photo-14303579.jpg" alt="Barbecued ribs with sauce on a wooden platter">
+          <div>
+           <h3>SMOKY RIBS</h3><button type="button" data-detail="ribs">ORDER NOW →</button>
+          </div>
+         </article>
+         <article class="highlight">
+          <img loading="lazy" src="images/pexels-photo-12557551.jpg" alt="Nachos with cheese, jalapeños and beans">
+          <div>
+           <h3>LOADED NACHOS</h3><button type="button" data-detail="nachos">ORDER NOW →</button>
+          </div>
+         </article>
+         <article class="highlight">
+          <img loading="lazy" src="images/pexels-photo-30700803.jpg" alt="Cobb salad with chicken, eggs, bacon and vegetables">
+          <div>
+           <h3>FRESH FAVORITES</h3><button type="button" data-detail="salad">ORDER NOW →</button>
+          </div>
+         </article>
+         <article class="highlight">
+          <img loading="lazy" src="images/pexels-photo-4662032.jpg" alt="Chocolate lava cake dusted with powdered sugar">
+          <div>
+           <h3>SWEET FINISH</h3><button type="button" data-detail="cake">ORDER NOW →</button>
+          </div>
+         </article>
+        </div>
+       </div>
+       <div class="reward-promo">
+        <span class="eyebrow">MORE TO LOVE</span>
+        <h2>EARN FREE FOOD</h2>
+        <p>Enjoy the perks of every simulated order with demo rewards.</p>
+        <div class="reward-cards">
+         <div>
+          ORDER<small>Pick your favorites</small>
+         </div>
+         <div>
+          EARN<small>Collect demo points</small>
+         </div>
+         <div>
+          REDEEM<small>Unlock a demo discount</small>
+         </div>
+        </div><button class="btn btn-navy" type="button" data-go="rewards">EXPLORE REWARDS</button>
+       </div>
+       <footer class="footer">
+        <h2>GOOD TIMES START HERE.</h2>
+        <div class="footer-links">
+         <button type="button" data-go="menu">MENU</button><button type="button" data-go="rewards">REWARDS</button><button type="button" data-go="locations">LOCATIONS</button><button type="button" data-go="orders">ORDERS</button><button type="button" data-go="account">ACCOUNT</button><a class="get-app" data-install href="index.html" target="_blank" rel="noopener">GET THE APP</a>
+        </div>
+        <p>Restaurant ordering demonstration. Sample locations, illustrative prices and simulated orders only.</p>
+       </footer>
+      </section>
+      <section id="menu" class="view" aria-label="Menu">
+       <div class="page-title">
+        <span class="eyebrow">FIND YOUR FAVORITE</span>
+        <h1>THE MENU</h1>
+        <p>Sample items and illustrative USD prices.</p>
+       </div><label class="sr-only" for="menu-search">Search menu</label><input id="menu-search" class="search" type="search" placeholder="Search food and drinks">
+       <nav id="categories" class="chips" aria-label="Menu categories"></nav>
+       <div id="menu-list" class="menu-list"></div>
+       <p id="menu-empty" class="muted" hidden="" style="text-align:center;padding:20px">No items match your search.</p>
+      </section>
+      <section id="rewards" class="view" aria-label="Rewards">
+       <div class="page-title">
+        <span class="eyebrow">GOOD FOOD. GOOD PERKS.</span>
+        <h1>MY REWARDS</h1>
+        <p>Simulated loyalty points—not real restaurant rewards.</p>
+       </div>
+       <div class="member">
+        <span class="eyebrow">★ DEMO MEMBER</span>
+        <h2 id="member-name">GUEST</h2>
+        <div class="row">
+         <span class="tiny">REWARDS BALANCE</span><strong id="points">0 POINTS</strong>
+        </div>
+        <div class="progress">
+         <span id="progress-fill"></span>
+        </div>
+        <p id="progress-copy" class="tiny"></p>
+       </div>
+       <div class="panel">
+        <h2>HOW IT WORKS</h2>
+        <p class="muted">Earn one demo point per eligible dollar on a completed simulated order. Redeem 50 points for $5 off or 100 points for $12 off a future demo order. One reward per order.</p>
+       </div>
+       <div class="panel">
+        <h2>AVAILABLE REWARDS</h2>
+        <div class="row line">
+         <span class="tiny"><strong>$5 OFF</strong><br>
+          50 demo points</span><button class="btn" type="button" data-redeem="5">REDEEM</button>
+        </div>
+        <div class="row line">
+         <span class="tiny"><strong>$12 OFF</strong><br>
+          100 demo points</span><button class="btn" type="button" data-redeem="12">REDEEM</button>
+        </div>
+       </div>
+       <div class="panel">
+        <h2>RECENT ACTIVITY</h2>
+        <div id="reward-activity" class="muted"></div>
+       </div>
+      </section>
+      <section id="orders" class="view" aria-label="Orders">
+       <div class="page-title">
+        <span class="eyebrow">YOUR GOOD TIMES</span>
+        <h1>YOUR ORDERS</h1>
+        <p>Order history and statuses are simulated.</p>
+       </div>
+       <div id="orders-content"></div>
+      </section>
+      <section id="account" class="view" aria-label="Account">
+       <div class="page-title">
+        <span class="eyebrow">MAKE IT YOURS</span>
+        <h1>YOUR ACCOUNT</h1>
+        <p>Browser-local demo profile; no real sign-in.</p>
+       </div>
+       <div class="panel">
+        <h2 id="account-state">DEMO PROFILE</h2>
+        <p class="muted">Name and email identify this demo profile only. No password or real account is created.</p>
+        <form id="profile-form">
+         <label class="field-label" for="profile-name">Name</label><input id="profile-name" class="field" required="" maxlength="50" autocomplete="name"><label class="field-label" for="profile-email">Email</label><input id="profile-email" class="field" type="email" required="" autocomplete="email">
+         <div class="row" style="margin-top:14px">
+          <button class="btn" type="submit">SAVE PROFILE</button><button id="signout" class="small-link" type="button">CLEAR PROFILE</button>
+         </div>
+        </form>
+       </div>
+       <div class="panel">
+        <h2>ORDER PREFERENCE</h2><label class="field-label" for="pref-mode">Default order type</label><select id="pref-mode" class="field"><option value="pickup">Pickup</option><option value="delivery">Delivery</option></select>
+       </div>
+       <div class="panel">
+        <h2>YOUR FAVORITES</h2>
+        <div id="favorites-content" class="muted"></div>
+       </div>
+       <div class="panel">
+        <h2>YOUR DEMO ORDERS</h2>
+        <p id="account-orders" class="muted"></p><button class="btn" type="button" data-go="orders">VIEW ORDER HISTORY</button>
+       </div>
+       <p class="muted" style="padding:2px 16px 20px">Demo details stay in this browser where supported and do not sync across devices.</p>
+      </section>
+      <section id="locations" class="view" aria-label="Sample locations">
+       <div class="page-title">
+        <span class="eyebrow">PICK YOUR SPOT</span>
+        <h1>LOCATIONS</h1>
+        <p>Fictional sample locations. No real restaurant service.</p>
+       </div><label for="location-search" class="sr-only">Search sample locations</label><input id="location-search" class="search" type="search" placeholder="Search sample locations">
+       <div id="locations-list"></div>
+       <div class="panel">
+        <button class="small-link" type="button" data-back="">← BACK</button>
+       </div>
+      </section>
+      <section id="cart" class="view" aria-label="Cart">
+       <div class="page-title">
+        <span class="eyebrow">ALMOST THE GOOD PART</span>
+        <h1>YOUR CART</h1>
+        <p>Demo order only. No real fulfillment.</p>
+       </div>
+       <div id="cart-content"></div>
+      </section>
+      <section id="checkout" class="view" aria-label="Demo checkout">
+       <div class="page-title">
+        <button class="small-link" type="button" data-go="cart">← BACK TO CART</button>
+        <h1>DEMO CHECKOUT</h1>
+        <p>Simulation only. No payment credentials or real order.</p>
+       </div>
+       <div id="checkout-content"></div>
+      </section>
+      <section id="confirmation" class="view" aria-label="Demo order confirmation">
+       <div class="empty">
+        <i data-lucide="circle-check"></i>
+        <h2>THAT HIT THE SPOT.</h2>
+        <p id="confirmation-copy" class="muted"></p>
+        <p class="muted">Simulated only: nothing was sent to a restaurant and no payment was collected.</p><button class="btn" type="button" data-go="orders">VIEW DEMO ORDER</button>
+       </div>
+      </section>
+     </div>
+     <nav class="nav" aria-label="Main navigation">
+      <button type="button" class="on" data-go="home"><i data-lucide="house"></i>Home</button><button type="button" data-go="menu"><i data-lucide="utensils"></i>Menu</button><button type="button" data-go="rewards"><i data-lucide="star"></i>Rewards</button><button type="button" data-go="orders"><i data-lucide="receipt-text"></i>Orders</button><button type="button" data-go="account"><i data-lucide="user-round"></i>Account</button>
+     </nav>
+     <div id="overlay" class="overlay">
+      <div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-label="Customize menu item"></div>
+     </div>
+     <div id="welcome" class="welcome" role="dialog" aria-modal="true" aria-label="Choose pickup or delivery" hidden>
+      <div class="welcome-card">
+       <span class="eyebrow">LET’S EAT</span>
+       <h2 id="welcome-title">WELCOME TO CHILI’S</h2>
+       <p class="welcome-sub">How would you like your order?</p>
+       <div class="welcome-actions">
+        <button type="button" data-welcome-mode="pickup"><i data-lucide="shopping-bag"></i><span class="welcome-mode">PICKUP</span><small>We’ll have it bagged and ready</small></button>
+        <button type="button" data-welcome-mode="delivery"><i data-lucide="bike"></i><span class="welcome-mode">DELIVERY</span><small>Right to your door</small></button>
+       </div>
+       <p class="welcome-note">Saved as your preference — change it any time in the cart.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </main>
+<script src="app.js"></script>
+ 
+</body></html>
