@@ -1,18 +1,5 @@
-# Chili's ordering demo — https://chiliapp.vercel.app
+# Chili's ordering demo — https://chilis-rust.vercel.app
 User-agent: *
 Allow: /
 
-# command-line downloaders are refused by middleware.js; this is the courtesy layer
-User-agent: curl
-Disallow: /
-
-User-agent: Wget
-Disallow: /
-
-User-agent: Python-requests
-Disallow: /
-
-User-agent: python
-Disallow: /
-
-Sitemap: https://chiliapp.vercel.app/sitemap.xml
+Sitemap: https://chilis-rust.vercel.app/sitemap.xml
