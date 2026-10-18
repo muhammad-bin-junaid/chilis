@@ -1,5 +1,5 @@
 /* Chili's PWA — cache-first shell so the app opens and works offline. */
-const CACHE = 'chilis-pwa-v3';
+const CACHE = 'chilis-pwa-v4';
 
 const ASSETS = [
   './',
@@ -7,6 +7,7 @@ const ASSETS = [
   'app.html',
   'styles.css',
   'landing.css',
+  'landing.js',
   'app.js',
   'pwa.js',
   'manifest.webmanifest',
@@ -61,6 +62,7 @@ self.addEventListener('fetch', event => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;   // fonts and the like stay on the network
+  if (url.pathname.endsWith('.apk')) return;         // sideload downloads bypass the SW — never cache a binary
 
   const isNavigation = request.mode === 'navigate';
 

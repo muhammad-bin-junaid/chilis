@@ -51,3 +51,17 @@ ol strong{color:#fff;font-weight:700}
 .tiny a:hover{color:var(--red)}
 
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* platform switcher: Android · iOS · Desktop (Desktop hides on phone viewports) */
+.switch{display:flex;justify-content:center;gap:4px;background:#161922;border:1px solid #262b38;border-radius:999px;padding:4px;margin:0 auto 14px;max-width:100%;overflow-x:auto}
+.switch [role=tab]{font:800 12px/1 "DM Sans","Segoe UI",Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#8d94a7;padding:10px 17px;border:0;border-radius:999px;background:transparent;white-space:nowrap;cursor:pointer}
+.switch [role=tab][aria-selected=true]{background:var(--red);color:#fff}
+.switch [role=tab]:focus-visible{outline:3px solid #ed9a00;outline-offset:2px}
+.switch [role=tab][hidden],.panel[hidden]{display:none}
+.panel{text-align:left}
+.btn-cta{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:12px;background:var(--red);color:#fff;font:800 14px/1 "DM Sans","Segoe UI",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:16px 18px;border-radius:12px;box-shadow:0 12px 30px #d7193540}
+.btn-cta:hover{background:var(--red-dark)}
+.btn-cta:focus-visible{outline:3px solid #ed9a00;outline-offset:2px}
+.cta-sub{margin:10px auto 0;max-width:470px;font-size:11px;line-height:1.6;color:#7b8296;text-align:center}
+.feature-row{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:16px auto 0;max-width:640px}
+.feature-row span{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#a7adbe;background:#161922;border:1px solid #262b38;border-radius:999px;padding:7px 11px}

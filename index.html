@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Welcome to Chili’s App · Add it to your home screen</title>
-  <meta name="description" content="Welcome to Chili’s App. Install it from your browser: Chrome on Android or computer, Safari on iPhone and iPad.">
+  <meta name="description" content="Welcome to Chili’s App. Pick your platform — Android (Chrome install or APK download), iOS (Safari), or desktop (open the app.html simulation in its mobile shell).">
   <meta name="theme-color" content="#d71935">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="chili.svg" type="image/svg+xml">
@@ -21,59 +21,78 @@
   <script src="pwa.js"></script>
 </head>
 <body>
-  <main class="wrap">
-    <header class="hero">
-      <img class="logo" src="chili.svg" alt="Chili’s" width="32" height="38">
-      <span class="eyebrow">Chili’s · mobile ordering</span>
-      <h1>Welcome to Chili’s App</h1>
-      <p class="lede">Two taps and it lives on your home screen — full screen, no browser bar, straight back to your cart.</p>
-    </header>
+<main class="wrap">
+  <header class="hero">
+    <img class="logo" src="chili.svg" alt="Chili’s" width="32" height="38">
+    <span class="eyebrow">Chili’s · mobile ordering</span>
+    <h1>Welcome to Chili’s App</h1>
+    <p class="lede">Two taps and it lives on your home screen — full screen, no browser bar, straight back to your cart. Pick your platform and go.</p>
+  </header>
 
-    <p class="section-label">Get it in three taps</p>
+  <p class="section-label">Pick your platform</p>
 
-    <section class="steps" aria-label="How to install the app">
-      <article class="step-card">
-        <div class="step-head">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.1"/><circle cx="12" cy="12" r="2.1"/><circle cx="12" cy="19" r="2.1"/></svg>
-          <div><span class="platform">Android phone</span><h2>Chrome</h2></div>
-        </div>
-        <ol>
-          <li>Tap the <strong>⋮</strong> menu in the corner.</li>
-          <li>Pick <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
-          <li>Tap <strong>Install</strong> — the icon appears right away.</li>
-        </ol>
-      </article>
+  <div class="switch" role="tablist" aria-label="Choose your platform">
+    <button type="button" role="tab" id="tab-android" aria-controls="p-android" aria-selected="true">Android</button>
+    <button type="button" role="tab" id="tab-ios" aria-controls="p-ios" aria-selected="false" tabindex="-1">iOS</button>
+    <button type="button" role="tab" id="tab-desktop" aria-controls="p-desktop" aria-selected="false" tabindex="-1">Desktop</button>
+  </div>
 
-      <article class="step-card">
-        <div class="step-head">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v11"/><path d="m8 7.5 4-4 4 4"/><path d="M6.5 11H6a2 2 0 0 0-2 2v5.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V13a2 2 0 0 0-2-2h-.5"/></svg>
-          <div><span class="platform">iPhone &amp; iPad</span><h2>Safari</h2></div>
-        </div>
-        <ol>
-          <li>Open this page in <strong>Safari</strong>, then tap the <strong>Share</strong> button.</li>
-          <li>Scroll down and choose <strong>Add to Home Screen</strong>.</li>
-          <li>Tap <strong>Add</strong> — you’re done.</li>
-        </ol>
-      </article>
+  <section class="panel" id="p-android" role="tabpanel" aria-labelledby="tab-android">
+    <article class="step-card">
+      <div class="step-head">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.1"/><circle cx="12" cy="12" r="2.1"/><circle cx="12" cy="19" r="2.1"/></svg>
+        <div><span class="platform">Android phone</span><h2>Chrome</h2></div>
+      </div>
+      <ol>
+        <li>Tap the <strong>⋮</strong> menu in the corner.</li>
+        <li>Pick <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
+        <li>Tap <strong>Install</strong> — the icon appears right away.</li>
+      </ol>
+    </article>
+    <a class="btn-cta" href="Chili's.apk" download>⬇ Download the Android APK</a>
+    <p class="cta-sub">Skip the browser install: this is the <strong>Trusted Web Activity</strong> build from this repository, packaged with PWABuilder. To sideload, send the file to your phone, open it, and allow installs from your file manager if asked.</p>
+  </section>
 
-      <article class="step-card">
-        <div class="step-head">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8.5 21h7M12 17v4"/></svg>
-          <div><span class="platform">Computer</span><h2>Chrome</h2></div>
-        </div>
-        <ol>
-          <li>Click the <strong>⋮</strong> menu in the toolbar.</li>
-          <li>Choose <strong>Install Chili’s…</strong></li>
-          <li>Click <strong>Install</strong> — it opens in its own window.</li>
-        </ol>
-      </article>
-    </section>
+  <section class="panel" id="p-ios" role="tabpanel" aria-labelledby="tab-ios" hidden>
+    <article class="step-card">
+      <div class="step-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v11"/><path d="m8 7.5 4-4 4 4"/><path d="M6.5 11H6a2 2 0 0 0-2 2v5.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V13a2 2 0 0 0-2-2h-.5"/></svg>
+        <div><span class="platform">iPhone &amp; iPad</span><h2>Safari</h2></div>
+      </div>
+      <ol>
+        <li>Open this page in <strong>Safari</strong>, then tap the <strong>Share</strong> button.</li>
+        <li>Scroll down and choose <strong>Add to Home Screen</strong>.</li>
+        <li>Tap <strong>Add</strong> — you’re done.</li>
+      </ol>
+    </article>
+  </section>
 
-    <p class="note">Install from the browser you’re in: <strong>Safari</strong> on iPhone/iPad, <strong>Chrome</strong> on Android or desktop. Installed, the app runs full screen — no phone frame, no browser bars — and it still opens without a connection.</p>
+  <section class="panel" id="p-desktop" role="tabpanel" aria-labelledby="tab-desktop" hidden>
+    <article class="step-card">
+      <div class="step-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8.5 21h7M12 17v4"/></svg>
+        <div><span class="platform">Computer</span><h2>Mobile shell</h2></div>
+      </div>
+      <ol>
+        <li>On a wide screen, <strong>app.html</strong> renders inside an interactive <strong>mobile shell</strong> — a simulated phone you can actually use.</li>
+        <li>Menu, cart, rewards and checkout all work inside it.</li>
+        <li>Open the simulation below — the shell only appears on wide windows.</li>
+      </ol>
+    </article>
+    <a class="btn-cta" href="app.html">Open the simulation ↗</a>
+    <p class="cta-sub">The full concept app in its desktop showcase shell.</p>
+  </section>
 
-    <footer class="foot">
-      <p class="tiny">Just here to browse? <a href="app.html">Open the web app</a> — no install needed.</p>
-    </footer>
-  </main>
+  <div class="feature-row" aria-label="App capabilities">
+    <span>Works offline</span><span>Long-press shortcuts</span><span>Share target</span><span>Full-screen install</span>
+  </div>
+
+  <p class="note">Install from the browser you’re in: <strong>Safari</strong> on iPhone/iPad, <strong>Chrome</strong> on Android or desktop. Installed, the app runs full screen — no phone frame, no browser bars — and it still opens without a connection.</p>
+
+  <footer class="foot">
+    <p class="tiny">Just here to browse? <a href="app.html">Open the web app</a> — no install needed.</p>
+  </footer>
+</main>
+<script src="landing.js"></script>
 </body>
 </html>
