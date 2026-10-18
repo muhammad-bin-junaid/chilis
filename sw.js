@@ -1,5 +1,5 @@
 /* Chili's PWA — cache-first shell so the app opens and works offline. */
-const CACHE = 'chilis-pwa-v1';
+const CACHE = 'chilis-pwa-v2';
 
 const ASSETS = [
   './',

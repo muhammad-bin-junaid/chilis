@@ -76,5 +76,21 @@
     html.is-standalone .nav{height:auto;min-height:64px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
     html.is-standalone .notice{bottom:calc(78px + env(safe-area-inset-bottom))}
     html.is-standalone .welcome{padding-top:calc(20px + env(safe-area-inset-top));padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+
+  /* real phone / tablet-sized screen in a normal browser tab: no drawn phone
+     frame either — the device bezel is the frame. Covers portrait phones
+     (<=700px wide) and landscape phones (<=500px tall). Desktop keeps the
+     showcase frame. */
+  @media (max-width:700px),(max-height:500px){
+    body{background:#fff}
+    .stage{display:block;padding:0;background:#fff;min-height:100vh;min-height:100dvh}
+    .phone{width:100%;height:100vh;height:100dvh;min-height:0;padding:0;border:0;border-radius:0;box-shadow:none;background:#fff}
+    .phone:before,.phone:after{display:none}
+    .screen{border-radius:0}
+    .status{display:none}
+    .nav{height:auto;min-height:64px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+    .notice{bottom:calc(78px + env(safe-area-inset-bottom))}
+    .welcome{padding-top:calc(20px + env(safe-area-inset-top));padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+  }
     @media(max-width:360px){.hero-logo{width:150px}}
   
