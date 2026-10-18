@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vercel.chilis_rust.twa",
+      "sha256_cert_fingerprints": ["E8:E6:BD:C7:F0:8B:BF:B9:8C:55:34:00:5D:63:68:C1:BB:64:E5:D9:45:82:19:86:2B:25:03:94:EE:52:3C:79"]
+    }
+  }
+]
