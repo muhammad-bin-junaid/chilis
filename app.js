@@ -115,3 +115,20 @@ function showWelcome(){
  let first=el.querySelector('button');if(first)first.focus();
 }
 buildMenu();renderCategories();filterMenu();render();icons();showWelcome();
+/* Deep links: long-press icon shortcuts open app.html#menu etc., and the OS
+   share sheet (manifest share_target) lands as ?text= / ?url= on the query. */
+function applyDeepLink(){
+ let params=new URLSearchParams(location.search),
+ shared=params.get('text')||params.get('title')||params.get('url');
+ if(shared){
+   go('menu');
+   let s=$('#menu-search');if(s)s.value=String(shared).slice(0,80);
+   filterMenu();
+   notice('Shared with Chili’s: “'+String(shared).slice(0,40)+'”');
+   history.replaceState(null,'',location.pathname+location.hash);
+ }
+ let view=(location.hash||'').slice(1);
+ if(view&&$$('.view').some(v=>v.id===view))go(view);
+}
+window.addEventListener('hashchange',applyDeepLink);
+applyDeepLink();

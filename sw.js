@@ -1,5 +1,5 @@
 /* Chili's PWA — cache-first shell so the app opens and works offline. */
-const CACHE = 'chilis-pwa-v2';
+const CACHE = 'chilis-pwa-v3';
 
 const ASSETS = [
   './',
@@ -17,6 +17,10 @@ const ASSETS = [
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
   'icons/apple-touch-icon.png',
+  'icons/shortcut-menu.png',
+  'icons/shortcut-cart.png',
+  'icons/shortcut-rewards.png',
+  'icons/shortcut-locations.png',
   'images/pexels-photo-12557551.jpg',
   'images/pexels-photo-14303579.jpg',
   'images/pexels-photo-15010289.jpg',
